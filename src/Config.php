@@ -8,7 +8,7 @@ declare ( strict_types = 1 );
 	@ php-version 7.4
 */
 
-namespace Nouvu;
+namespace Nouvu\Config;
 
 final class Config
 {
