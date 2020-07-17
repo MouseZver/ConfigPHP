@@ -1,9 +1,9 @@
 {
     "name": "nouvu/config",
-    "description": "Multi-screwdriver for the database Nouvu/Database",
+    "description": "Config php7.4",
     "type": "library",
     "license": "Apache-2.0",
-	"homepage": "https://github.com/MouseZver/Lerma",
+	"homepage": "https://github.com/MouseZver/ConfigPHP7",
 	"keywords": [
         "Config",
 		"php7.4"
@@ -15,13 +15,11 @@
         }
     ],
 	"require": {
-		"php": ">=7.4",
-		"nouvu/lermaext": "dev-master",
-		"nouvu/config": "3.1"
+		"php": ">=7.4"
 	},
 	"autoload": {
 		"psr-4": {
-			"Nouvu\\Database": "src"
+			"Nouvu\\Config": "src"
 		}
 	}
 }
