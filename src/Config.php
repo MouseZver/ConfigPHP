@@ -20,7 +20,7 @@ final class Config
 	
 	private array $cache = [];
 	
-	public function __construct ( array $config = [], string $separator = '\\' )
+	public function __construct ( array $config = [], string $separator = '.' )
 	{
 		$this -> config = $config;
 		
