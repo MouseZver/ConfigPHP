@@ -18,8 +18,6 @@ final class Config
 	
 	private $return;
 	
-	private array $cache = [];
-	
 	public function __construct ( array $config = [], string $separator = '.' )
 	{
 		$this -> config = $config;
@@ -36,14 +34,7 @@ final class Config
 
 	public function get( string $string = null, $default = null )
 	{
-		if ( array_key_exists ( $string, $this -> cache ) )
-		{
-			return $this -> cache[$string];
-		}
-		
 		$this -> segments( $string );
-		
-		$this -> cache( $string, $this -> return ?? $default );
 		
 		return $this -> return ?? $default;
 	}
@@ -55,14 +46,6 @@ final class Config
 		foreach ( explode ( $this -> separator, $string ) AS $name )
 		{
 			$this -> return = &$this -> return[$name];
-		}
-	}
-	
-	private function cache( ?string $string, $value ): void
-	{
-		if ( ! is_null ( $string ) )
-		{
-			$this -> cache[$string] = $value;
 		}
 	}
 }
