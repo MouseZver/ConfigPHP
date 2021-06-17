@@ -1,0 +1,53 @@
+Nouvu\Config\Config Object
+(
+    [return:Nouvu\Config\Config:private] => 
+    [config:Nouvu\Config\Config:private] => Array
+        (
+        )
+
+    [separator:Nouvu\Config\Config:private] => .
+)
+Nouvu\Config\Config Object
+(
+    [return:Nouvu\Config\Config:private] => none
+    [config:Nouvu\Config\Config:private] => Array
+        (
+            [0] => 1
+            [1] => Array
+                (
+                    [2] => Array
+                        (
+                            [3] => none
+                        )
+
+                )
+
+        )
+
+    [separator:Nouvu\Config\Config:private] => .
+)
+Nouvu\Config\Config Object
+(
+    [return:Nouvu\Config\Config:private] => 
+    [config:Nouvu\Config\Config:private] => Array
+        (
+            [1.1] => 5
+        )
+
+    [separator:Nouvu\Config\Config:private] => .
+)
+Nouvu\Config\Config Object
+(
+    [return:Nouvu\Config\Config:private] => none
+    [config:Nouvu\Config\Config:private] => Array
+        (
+            [1.1] => 5
+            [1] => Array
+                (
+                    [1] => none
+                )
+
+        )
+
+    [separator:Nouvu\Config\Config:private] => .
+)

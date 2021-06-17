@@ -5,43 +5,40 @@ declare ( strict_types = 1 );
 /*
 	@ Author: MouseZver
 	@ Email: mouse-zver@xaker.ru
-	@ php-version 7.4
+	@ php-version 8.0
 */
 
 namespace Nouvu\Config;
 
 final class Config
 {
-	private string $separator;
-	
-	private array $config;
-	
 	private $return;
 	
-	public function __construct ( array $config = [], string $separator = '.' )
-	{
-		$this -> config = $config;
-		
-		$this -> separator = $separator;
-	}
+	public function __construct ( private array $config = [], private string $separator = '.' )
+	{}
 
-	public function set( string $string = null, callable $callable )
+	public function set( string $string = null, callable $callable ): void
 	{
 		$this -> segments( $string );
 		
 		$callable( $this -> return );
 	}
 
-	public function get( string $string = null, $default = null )
+	public function get( string $string = null, mixed $default = null ): mixed
 	{
 		$this -> segments( $string );
 		
-		return $this -> return ?? $default;
+		return $this -> return ??= $default;
 	}
 	
-	private function segments( ?string $string ): void
+	private function segments( string | null $string ): void
 	{
 		$this -> return = &$this -> config;
+		
+		if ( is_null ( $string ) )
+		{
+			return;
+		}
 		
 		foreach ( explode ( $this -> separator, $string ) AS $name )
 		{

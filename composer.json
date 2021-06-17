@@ -1,12 +1,12 @@
 {
     "name": "nouvu/config",
-    "description": "Config php7.4",
+    "description": "Config PHP 8.0",
     "type": "library",
     "license": "Apache-2.0",
-	"homepage": "https://github.com/MouseZver/ConfigPHP7",
+	"homepage": "https://github.com/MouseZver/ConfigPHP",
 	"keywords": [
         "Config",
-		"php7.4"
+		"PHP 8.0"
     ],
     "authors": [
         {
@@ -15,7 +15,7 @@
         }
     ],
 	"require": {
-		"php": ">=7.4"
+		"php": ">=8.0"
 	},
 	"autoload": {
 		"psr-4": {
