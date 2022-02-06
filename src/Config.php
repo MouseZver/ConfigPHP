@@ -2,12 +2,6 @@
 
 declare ( strict_types = 1 );
 
-/*
-	@ Author: MouseZver
-	@ Email: mouse-zver@xaker.ru
-	@ php-version 8.0
-*/
-
 namespace Nouvu\Config;
 
 use InvalidArgumentException;
@@ -19,14 +13,14 @@ final class Config
 	public function __construct ( private array $config = [], private string $separator = '.' )
 	{}
 
-	public function set( string | int $offset = null, callable $callable ): void
+	public function set( string | int | null $offset, mixed $value ): void
 	{
 		$this -> segments( 'set', $offset );
 		
-		$callable( $this -> return );
+		$this -> return = $value;
 	}
 
-	public function get( string | int $offset = null, mixed $default = null ): mixed
+	public function get( string | int | null $offset, mixed $default = null ): mixed
 	{
 		try
 		{
@@ -38,6 +32,18 @@ final class Config
 		{
 			return $default;
 		}
+	}
+	
+	public function add( string | int | null $offset, array $value ): void
+	{
+		$this -> segments( 'set', $offset );
+		
+		if ( ! is_array ( $this -> return ) )
+		{
+			throw new InvalidArgumentException( '@Nouvu\Config - The final result should be an array to add to it - offset: ' . $offset );
+		}
+		
+		$this -> return = array_merge ( $this -> return, $value );
 	}
 	
 	public function has( string | int $offset ): bool
@@ -71,7 +77,7 @@ final class Config
 			}
 			else
 			{
-				throw new InvalidArgumentException( 'Not found key name - ' . $name );
+				throw new InvalidArgumentException( '@Nouvu\Config - Not found key name - ' . $name );
 			}
 		}
 	}

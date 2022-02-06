@@ -2,20 +2,55 @@
 
 require dirname ( __DIR__ ) . '/src/Config.php';
 
+function result( mixed $value ): void
+{
+	if ( is_array ( $value ) )
+	{
+		echo json_encode ( $value, 480 ) . PHP_EOL;
+		
+		return;
+	}
+	
+	var_export ( $value );
+}
+
+
+
 $config = new \Nouvu\Config\Config( separator: '.' );
 
-print_r ( $config );
+$config -> set( null, [ $config :: class ] );
 
-$config -> set( callable: fn( &$a ) => $a[] = 1 );
+$config -> set( 'a.b.c.d', true );
 
-$config -> get( '1.2.3', 'none' );
+result( $config -> get( null ) );
+/*
+{
+    "0": "Nouvu\\Config\\Config",
+    "a": {
+        "b": {
+            "c": {
+                "d": true
+            }
+        }
+    }
+}
+*/
 
-print_r ( $config );
+$config -> add( 'a.b.c', [ 'e' => null ] );
 
-$config = new \Nouvu\Config\Config( [ '1.1' => 5 ], '.' );
+result( $config -> has( 'a.b.c.e' ) ); // true
 
-print_r ( $config );
 
-$config -> get( '1.1', 'none' );
 
-print_r ( $config );
+result( $config -> get( null ) );
+/*{
+    "0": "Nouvu\\Config\\Config",
+    "a": {
+        "b": {
+            "c": {
+                "d": true,
+                "e": null
+            }
+        }
+    }
+}*/
