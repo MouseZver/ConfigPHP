@@ -34,7 +34,7 @@ final class Config
 		}
 	}
 	
-	public function add( string | int | null $offset, array $value ): void
+	public function add( string | int | null $offset, array $value, bool $before = false ): void
 	{
 		$this -> segments( 'set', $offset );
 		
@@ -43,7 +43,11 @@ final class Config
 			throw new InvalidArgumentException( '@Nouvu\Config - The final result should be an array to add to it - offset: ' . $offset );
 		}
 		
-		$this -> return = array_merge ( $this -> return, $value );
+		$this -> return = array_merge ( ...match ( $before )
+		{
+			true => [ $value, $this -> return ],
+			false => [ $this -> return, $value ],
+		} );
 	}
 	
 	public function has( string | int $offset ): bool

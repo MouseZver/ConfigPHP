@@ -54,3 +54,7 @@ result( $config -> get( null ) );
         }
     }
 }*/
+
+$config -> add( 'a.b.c', [ 'first' => null ], true );
+
+result( $config -> get( null ) );

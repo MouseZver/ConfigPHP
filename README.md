@@ -4,10 +4,10 @@
 
 | Method | Description |
 | ------ | ------ |
-| set( string &#124; int &#124; null $offset, mixed $value ): void | set values |
-| add( string &#124; int &#124; null $offset, array $value ): void | add values |
-| get( string &#124; int &#124; null $offset, mixed $default = null ): mixed | get value(s) |
-| has( string &#124; int $offset ): bool | has offset |
+| set( string \| int \| null $offset, mixed $value ): void | set values |
+| add( string \| int \| null $offset, array $value, bool $before = false ): void | add values |
+| get( string \| int \| null $offset, mixed $default = null ): mixed | get value(s) |
+| has( string \| int $offset ): bool | has offset |
 
 ```php
 // [ 'nouvu/config' ]
