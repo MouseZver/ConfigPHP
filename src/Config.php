@@ -38,14 +38,16 @@ final class Config
 	{
 		$this -> segments( 'set', $offset );
 		
+		$this -> return ??= [];
+		
 		if ( ! is_array ( $this -> return ) )
 		{
-			throw new InvalidArgumentException( '@Nouvu\Config - The final result should be an array to add to it - offset: ' . $offset );
+			throw new InvalidArgumentException( "@Nouvu\Config - An array segment {$offset} is not an array type for adding data" );
 		}
 		
 		$this -> return = array_merge ( ...match ( $before )
 		{
-			true => [ $value, $this -> return ],
+			true => [ $value, $this -> return  ],
 			false => [ $this -> return, $value ],
 		} );
 	}
